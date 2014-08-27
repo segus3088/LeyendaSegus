@@ -63,6 +63,9 @@ function inicio(){
 	liz.imagen.onload = confirmarLiz;
 
 	document.addEventListener("keydown", teclado);
+
+	var botonM = document.getElementById("botonM");
+	botonM.addEventListener("click", moverBoton)
 	//Esto es para cuando se toma por botones 
 	//var m = document.getElementById("mover");
 	//m.addEventListener("click", moverFrente); //aquí es donde se mueve y se invoca el boton 
@@ -142,6 +145,14 @@ function teclado(datos){
 
 	direccion = codigoTecla;
 	dibujarAll();
+
+}
+
+function moverBoton(dir){
+	//alert("Por teclado");
+	if(tifis.y > 0){
+			tifis.y -= tifis.velocidad;
+		}
 
 }
 
