@@ -64,8 +64,17 @@ function inicio(){
 
 	document.addEventListener("keydown", teclado);
 
-	var botonM = document.getElementById("botonM");
-	botonM.addEventListener("click", moverBoton)
+	var botonAr = document.getElementById("botonAr");
+	botonAr.addEventListener("click", moverBotonAr);
+
+	var botonAb = document.getElementById("botonAb");
+	botonAb.addEventListener("click", moverBotonAb);
+
+	var botonI = document.getElementById("botonI");
+	botonI.addEventListener("click", moverBotonI);
+
+	var botonD = document.getElementById("botonD");
+	botonD.addEventListener("click", moverBotonD);
 	//Esto es para cuando se toma por botones 
 	//var m = document.getElementById("mover");
 	//m.addEventListener("click", moverFrente); //aquí es donde se mueve y se invoca el boton 
@@ -148,12 +157,44 @@ function teclado(datos){
 
 }
 
-function moverBoton(dir){
-	//alert("Por teclado");
+function moverBotonAr(dir){
+	//alert("Por teclado arriba");
 	if(tifis.y > 0){
 			tifis.y -= tifis.velocidad;
-		}
+	}
 
+	direccion = teclas.UP;
+	dibujarAll();
+}
+
+function moverBotonAb(dir){
+	//alert("Por teclado Abajo");
+	if(tifis.y < 450){
+			tifis.y += tifis.velocidad;
+	}
+
+	direccion = teclas.DOWN;
+	dibujarAll();
+}
+
+function moverBotonI(dir){
+	//alert("Por teclado izq");
+	if(tifis.x >= 0){
+			tifis.x -= tifis.velocidad;
+	}
+
+	direccion = teclas.LEFT;
+	dibujarAll();
+}
+
+function moverBotonD(dir){
+	//alert("Por teclado Derecha");
+	if(tifis.x <= 450){
+			tifis.x += tifis.velocidad;
+	}
+
+	direccion = teclas.RIGHT;
+	dibujarAll();
 }
 
 
