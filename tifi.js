@@ -15,7 +15,7 @@ var tifis = {
 	izqOK: false,
 	derURL: "diana-der.png",
 	derOK: false,
-	velocidad: 10
+	velocidad: 50
 	
 };
 
@@ -23,7 +23,8 @@ var liz = {
 	x: 400,
 	y: 200,
 	lizURL: "liz.png",
-	lizOK: false
+	lizOK: false,
+	velocidad:50
 }
 
 var teclas = {
@@ -136,7 +137,7 @@ function teclado(datos){
 	}
 
 	if(codigoTecla == teclas.LEFT){
-		if(tifis.x >= 0){
+		if(tifis.x > 0){
 			tifis.x -= tifis.velocidad;
 		}
 		
@@ -144,7 +145,7 @@ function teclado(datos){
 	}
 
 	if(codigoTecla == teclas.RIGHT){
-		if(tifis.x <= 450){
+		if(tifis.x < 450){
 			tifis.x += tifis.velocidad;
 		}
 		
@@ -197,6 +198,29 @@ function moverBotonD(dir){
 	dibujarAll();
 }
 
+function moberLiz(){
+	var mX;
+	mX = Math.floor( Math.random() *  (1 - 0 + 1) + 0); // para que me de entre 1 o 0
+	//console.log(mX);
+	if (mX == 1 && liz.x <= 450){
+		liz.x += liz.velocidad;
+	}
+	if (mX == 0 && liz.x >= 0){
+		liz.x -= liz.velocidad;
+	}
+	//console.log(liz.x);
+
+	mX = Math.floor( Math.random() *  (1 - 0 + 1) + 0);
+	//console.log(mX);
+	if (mX == 1 && liz.y < 450){
+		liz.y += liz.velocidad;
+	}
+	if (mX == 0 && liz.y > 0){
+		liz.y -= liz.velocidad;
+	}
+
+}
+
 
 function dibujarAll(){
 
@@ -230,6 +254,7 @@ function dibujarAll(){
 
 	//capa 3	
 	if (liz.lizOK){
+		moberLiz();		
 		tablero.drawImage(liz.imagen, liz.x, liz.y);
 	}
 	
